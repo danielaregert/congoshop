@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CongoShop</title>
-  <link rel="stylesheet" href="dist/styles.css" />
-  <script src="dist/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/script.js"></script>
 </head>
 
 <body>
@@ -32,12 +33,12 @@
       </button>
     </div>
     <div id="showMenu" class="md:hidden">
-      <img src='dist/assets/logos/Menu.svg' alt="Menu icon" />
+      <img src='/Menu.svg' alt="Menu icon" />
     </div>
   </nav>
-  <div id='mobileNav' class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-secondary z-20 animate-fade-in-down">
+  <div id='mobileNav' class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-secondary z-20 animate-fade-in-down bg-white">
     <div id="hideMenu" class="flex justify-end">
-      <img src='dist/assets/logos/Cross.svg' alt="" class="h-16 w-16" />
+      <img src='/Cross.svg' alt="" class="h-16 w-16" />
     </div>
     <ul class="font-montserrat flex flex-col mx-8 my-24 items-center text-3xl">
       <li class="my-6">
@@ -78,7 +79,7 @@
       <div class="relative">
         <img src='dist/assets/Highlight1.svg' alt="" class="absolute -top-16 -left-10" />
       </div>
-      <img src='dist/assets/bolsa.webp' alt="Macbook" />
+      <img src='bolsa.webp' alt="Macbook" />
       <div class="relative">
         <img src='dist/assets/Highlight2.svg' alt="" class="absolute -bottom-10 -right-6" />
       </div>
@@ -86,9 +87,9 @@
   </section>
 
   <!-- How it works -->
-  <section class="bg-black text-white sectionSize hidden">
+  <section class="bg-black text-white lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center hidden">
     <div>
-      <h2 class="secondaryTitle bg-underline2 bg-100%">How it works</h2>
+      <h2 class="font-pt-serif text-3xl bg-left-bottom bg-no-repeat pb-8 px-16 mb-8 bg-underline2 bg-100%">How it works</h2>
     </div>
     <div class="flex flex-col md:flex-row">
       <div class="flex-1 mx-8 flex flex-col items-center my-4">
@@ -122,9 +123,9 @@
   </section>
 
   <!-- Features -->
-  <section id="quienes" class="sectionSize bg-secondary">
+  <section id="quienes" class="lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center bg-secondary">
     <div>
-      <h2 class="secondaryTitle bg-underline3 bg-100%">Qué es CongoShop</h2>
+      <h2 class="font-pt-serif text-3xl bg-left-bottom bg-no-repeat pb-8 px-16 mb-8 bg-underline3 bg-100%">Qué es CongoShop</h2>
     </div>
     <div class="md:grid md:grid-cols-2 md:grid-rows-2">
 
@@ -176,9 +177,9 @@
   </section>
 
   <!-- Pricing -->
-  <section class="hidden sectionSize bg-secondary py-0">
+  <section class="hidden lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center bg-secondary py-0">
     <div>
-      <h2 class="secondaryTitle bg-underline4 mb-0 bg-100%">Pricing</h2>
+      <h2 class="font-pt-serif text-3xl bg-left-bottom bg-no-repeat pb-8 px-16 mb-8 bg-underline4 mb-0 bg-100%">Pricing</h2>
     </div>
     <div class="flex w-full flex-col md:flex-row">
 
@@ -267,9 +268,9 @@
   </section>
 
   <!-- FAQ  -->
-  <section class="sectionSize items-start pt-8 md:pt-36 bg-black text-white">
+  <section class="lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center items-start pt-8 md:pt-36 bg-black text-white">
     <div>
-      <h2 class="secondaryTitle bg-highlight3 p-10 mb-0 bg-center bg-100%">
+      <h2 class="font-pt-serif text-3xl bg-left-bottom bg-no-repeat pb-8 px-16 mb-8 bg-highlight3 p-10 mb-0 bg-center bg-100%">
         FAQ
       </h2>
     </div>
@@ -281,7 +282,7 @@
         </div>
         <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
       </div>
-      <div answer class="font-montserrat text-sm font-extralight pb-8 hidden">
+      <div answer class="font-montserrat text-sm font-extralight pt-8 hidden">
         Por supuesto, contactanos por <a style="text-decoration:underline" href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles...">Whatsapp</a> y te ayudamos a comprar lo que necesites.
       </div>
     </div>
@@ -294,7 +295,7 @@
         </div>
         <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
       </div>
-      <div answer class="font-montserrat text-sm font-extralight pb-8 hidden">
+      <div answer class="font-montserrat text-sm font-extralight pt-8 hidden">
         Sólo vendemos online, pero podes pasar a retirar por nuestra oficina en CABA, en congreso.
       </div>
     </div>
@@ -316,7 +317,7 @@
   </section>
 
   <!-- Footer -->
-  <section class="bg-black sectionSize">
+  <section class="bg-black lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center">
     <div class="mb-4">
       <span class="text-white font-bold">CongoShop</span>
     </div>
