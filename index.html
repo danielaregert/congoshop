@@ -252,6 +252,153 @@
     </div>
   </section>
 
+
+<!-- Matter.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
+<canvas id="billetes-canvas" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+"></canvas>
+
+<script>
+const { Engine, Render, Runner, Bodies, Body, World, Events } = Matter;
+
+const canvas  = document.getElementById('billetes-canvas');
+canvas.width  = window.innerWidth;
+canvas.height = window.innerHeight;
+window.addEventListener('resize', () => {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+const engine = Engine.create({ gravity: { y: 1.5 } });
+const world  = engine.world;
+
+// Piso invisible
+const piso = Bodies.rectangle(
+  window.innerWidth / 2, window.innerHeight + 25,
+  window.innerWidth * 2, 50,
+  { isStatic: true }
+);
+// Paredes
+const paredIzq = Bodies.rectangle(-25, window.innerHeight/2, 50, window.innerHeight*2, { isStatic: true });
+const paredDer = Bodies.rectangle(window.innerWidth+25, window.innerHeight/2, 50, window.innerHeight*2, { isStatic: true });
+World.add(world, [piso, paredIzq, paredDer]);
+
+// Cargar imágenes de billetes
+const imagenes = ['img/5-cent.jpg', 'img/25-cent.jpg', 'img/50-cent.jpg'].map(src => {
+  const img = new Image();
+  img.src = src;
+  return img;
+});
+
+const billetesEnMundo = [];
+
+function crearBillete() {
+  const img   = imagenes[Math.floor(Math.random() * imagenes.length)];
+  const w     = 80 + Math.random() * 40;   // ancho entre 80 y 120px
+  const h     = w * 0.5;                    // proporción billete
+  const x     = Math.random() * window.innerWidth;
+  const y     = -h;
+
+  const body = Bodies.rectangle(x, y, w, h, {
+    restitution: 0.3,   // rebote suave
+    friction: 0.8,
+    frictionAir: 0.01,
+    angle: (Math.random() - 0.5) * 0.05,
+  });
+
+  // Velocidad inicial aleatoria
+  Body.setVelocity(body, {
+    x: (Math.random() - 0.5) * 4,
+    y: Math.random() * 3 + 2,
+  });
+  Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.08);
+
+  World.add(world, body);
+  billetesEnMundo.push({ body, img, w, h });
+}
+
+// Dibujo custom sobre canvas
+const ctx = canvas.getContext('2d');
+
+function dibujar() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (const { body, img, w, h } of billetesEnMundo) {
+    const { x, y } = body.position;
+    const angle    = body.angle;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.globalAlpha = 0.95;
+
+    if (img.complete) {
+      ctx.drawImage(img, -w/2, -h/2, w, h);
+    } else {
+      // Fallback mientras carga
+      ctx.fillStyle = '#85bb65';
+      ctx.fillRect(-w/2, -h/2, w, h);
+    }
+
+    ctx.restore();
+  }
+}
+
+// Loop
+const runner = Runner.create();
+Runner.run(runner, engine);
+
+(function loop() {
+  
+  Engine.update(engine, 1000/60);
+  dibujar();
+  requestAnimationFrame(loop);
+})();
+
+
+// Mouse que interactúa con los cuerpos
+const mouse = Matter.Mouse.create(canvas);
+const mouseConstraint = Matter.MouseConstraint.create(engine, {
+  mouse: mouse,
+  constraint: {
+    stiffness: 0.2,
+    render: { visible: false }
+  }
+});
+World.add(world, mouseConstraint);
+
+// Importante: que el canvas capture el mouse correctamente
+mouse.element = canvas;
+canvas.style.pointerEvents = 'auto'; // cambiamos esto para que reciba eventos
+
+
+// Limpiar billetes viejos cada 15 segundos para no sobrecargar
+setInterval(() => {
+  if (billetesEnMundo.length > 80) {
+    const viejos = billetesEnMundo.splice(0, 30);
+    viejos.forEach(({ body }) => World.remove(world, body));
+  }
+}, 15000);
+
+// Click en la bolsa → lluvia de billetes
+const bolsa = document.querySelector('img[alt="Macbook"]');
+bolsa.style.cursor = 'pointer';
+
+bolsa.addEventListener('click', () => {
+  // Lluvia de 40 billetes con delay escalonado
+  for (let i = 0; i < 40; i++) {
+    setTimeout(crearBillete, i * 40);
+  }
+});
+</script>
+
+
 <script>
     window.addEventListener("load", function () {
   console.log(document.querySelector("#showMenu"));
@@ -283,6 +430,8 @@
     });
   });
 });
+
+
 
 
 
