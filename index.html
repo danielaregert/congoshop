@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,253 +6,204 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CongoShop - Los mejores en venta online</title>
-   <link rel="icon" type="image/x-icon" href="img/bag-fill.svg">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="icon" type="image/x-icon" href="img/bag-fill.svg">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="/styles.css" />
-  <meta name="description" content="CongoShop es tu espacio online para realizar compras fáciles, rápidas y seguras desde cualquier lugar.">
-<meta name="keywords" content="CongoShop, tienda online, compras online, ecommerce, comprar online">
-<meta name="author" content="CongoShop">
-<meta property="og:title" content="CongoShop | Comprá online fácil, rápido y seguro">
-<meta property="og:description" content="Tu espacio online para compras fáciles y rápidas.">
-<meta property="og:type" content="website">
- 
+  <style>
+    .cursor-chanchito {
+      cursor: url('img/piggy-bank.svg') 16 16, auto;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .blink { animation: blink 1.2s ease-in-out infinite; }
+    #mensaje { min-width: 220px; text-align: center; }
+  </style>
+  <meta name="description" content="CongoShop es tu espacio online para realizar compras faciles, rapidas y seguras desde cualquier lugar.">
+  <meta name="keywords" content="CongoShop, tienda online, compras online, ecommerce, comprar online">
+  <meta name="author" content="CongoShop">
+  <meta property="og:title" content="CongoShop | Compra online facil, rapido y seguro">
+  <meta property="og:description" content="Tu espacio online para compras faciles y rapidas.">
+  <meta property="og:type" content="website">
 </head>
 
 <body>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8LSVKEFMJN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-8LSVKEFMJN');
 </script>
 
-
-  <!-- Navigation -->
-  <nav class="fixed flex justify-between py-6 w-full lg:px-48 md:px-12 px-4 content-center bg-secondary z-10">
-    <div class="flex items-center font-bold">
-     CongoShop
-    </div>
-    <ul class="font-montserrat items-center hidden md:flex">
-      <li class="mx-3 ">
-        <a class="growing-underline" href="#quienes">
-          Quiénes Somos
-        </a>
-      </li>
-      <li class="growing-underline mx-3">
-        <a target="_blank" href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles...">Contacto</a>
-      </li>
-    </ul>
-    <div class="font-montserrat hidden">
-      <button class="mr-6">Login</button>
-      <button class="py-2 px-4 text-white bg-black rounded-3xl">
-        Signup
-      </button>
-    </div>
-    <div id="showMenu" class="md:hidden">
-     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M19.75 12C19.75 11.5858 19.4142 11.25 19 11.25H5C4.58579 11.25 4.25 11.5858 4.25 12C4.25 12.4142 4.58579 12.75 5 12.75H19C19.4142 12.75 19.75 12.4142 19.75 12Z" fill="black"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M19.75 7C19.75 6.58579 19.4142 6.25 19 6.25H5C4.58579 6.25 4.25 6.58579 4.25 7C4.25 7.41421 4.58579 7.75 5 7.75H19C19.4142 7.75 19.75 7.41421 19.75 7Z" fill="black"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M19.75 17C19.75 16.5858 19.4142 16.25 19 16.25H5C4.58579 16.25 4.25 16.5858 4.25 17C4.25 17.4142 4.58579 17.75 5 17.75H19C19.4142 17.75 19.75 17.4142 19.75 17Z" fill="black"/>
-</svg>
-
-    </div>
-  </nav>
-  <div id='mobileNav' class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-secondary z-20 animate-fade-in-down bg-white">
-    <div id="hideMenu" class="flex justify-end">
-<span class="h-16 w-16 flex justify-end">
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.46445 15.5354L15.5355 8.46436" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M8.46446 8.46458L15.5355 15.5356" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
-</svg>
-</span>
-
-
-    </div>
-    <ul class="font-montserrat flex flex-col mx-8 my-24 items-center text-3xl">
-      <li class="my-6">
-        <a href="#quienes">Quiénes somos</a>
-      </li>
-      <li class="my-6 hidden">
-        <a href="#productos">Productos</a>
-      </li>
-      <li class="my-6">
-        <a target="_blank" href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles...">Contacto</a>
-      </li>
-    </ul>
+<!-- Navigation -->
+<nav class="fixed flex justify-between py-6 w-full lg:px-48 md:px-12 px-4 content-center bg-secondary z-10">
+  <div class="flex items-center font-bold">
+    CongoShop
   </div>
-
-  <!-- Hero -->
-  <section
-    class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
-    <div class="md:flex-1 md:mr-10">
-      <h1 class="font-pt-serif text-4xl md:text-5xl font-bold mb-7">
-        CongoShop:
-        <span class="bg-undeNOrline1 bg-left-bottom bg-no-repeat pb-2 bg-100%">
-         Compras online fáciles y seguras
-        </span>
-      </h1>
-      <p class="font-pt-serif font-normal mb-7">
-        Comprá sin vueltas, con envío rápido y atención personalizada. ¡Explorá nuestro catálogo y encontrá lo que buscás hoy mismo!
-      </p>
-      <div class="font-montserrat">
-        <button class="bg-black px-6 py-4 rounded-lg border-2 border-black border-solid text-white mr-2 mb-2 hidden">
-          Ver productos
-        </button>
-        <a href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles..." class="hvr-bounce-to-right contacto-btn px-6 py-4 border-2 border-black border-solid rounded-lg">
-          Contactar
-        </a>
-      </div>
-    </div>
-    <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1" 
-     id="hero-parallax" 
-     style="transform-style: preserve-3d; perspective: 1000px;">
-  
-  <div class="relative layer" data-depth="0.2">
-    <img src='img/Highlight1.svg' alt="" class="absolute -top-16 -left-10" />
+  <div id="mensaje" class="hidden items-center font-montserrat text-sm font-medium transition-all duration-300"></div>
+  <ul class="font-montserrat items-center hidden md:flex">
+    <li class="mx-3">
+      <a class="growing-underline" href="#quienes">Quienes Somos</a>
+    </li>
+    <li class="growing-underline mx-3">
+      <a target="_blank" href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles...">Contacto</a>
+    </li>
+    <li>
+      <img width="32" height="32" alt="Chanchito"
+        id="chanchito"
+        src="img/piggy-bank.svg"
+        style="z-index: 1000; transition: transform 0.2s ease; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));"
+      />
+    </li>
+  </ul>
+  <div class="font-montserrat hidden">
+    <button class="mr-6">Login</button>
+    <button class="py-2 px-4 text-white bg-black rounded-3xl">Signup</button>
   </div>
-
-  <img src='bolsa.webp' alt="Macbook" class="layer" data-depth="0.6" />
-
-  <div class="relative layer" data-depth="0.9">
-    <img src='img/Highlight2.svg' alt="" class="absolute -bottom-10 -right-6" />
+  <div id="showMenu" class="md:hidden">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M19.75 12C19.75 11.5858 19.4142 11.25 19 11.25H5C4.58579 11.25 4.25 11.5858 4.25 12C4.25 12.4142 4.58579 12.75 5 12.75H19C19.4142 12.75 19.75 12.4142 19.75 12Z" fill="black"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M19.75 7C19.75 6.58579 19.4142 6.25 19 6.25H5C4.58579 6.25 4.25 6.58579 4.25 7C4.25 7.41421 4.58579 7.75 5 7.75H19C19.4142 7.75 19.75 7.41421 19.75 7Z" fill="black"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M19.75 17C19.75 16.5858 19.4142 16.25 19 16.25H5C4.58579 16.25 4.25 16.5858 4.25 17C4.25 17.4142 4.58579 17.75 5 17.75H19C19.4142 17.75 19.75 17.4142 19.75 17Z" fill="black"/>
+    </svg>
   </div>
+</nav>
 
+<div id='mobileNav' class="hidden px-4 py-6 fixed top-0 left-0 h-full w-full bg-secondary z-20 animate-fade-in-down bg-white">
+  <div id="hideMenu" class="flex justify-end">
+    <span class="h-16 w-16 flex justify-end">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.46445 15.5354L15.5355 8.46436" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M8.46446 8.46458L15.5355 15.5356" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </span>
+  </div>
+  <ul class="font-montserrat flex flex-col mx-8 my-24 items-center text-3xl">
+    <li class="my-6"><a href="#quienes">Quienes somos</a></li>
+    <li class="my-6 hidden"><a href="#productos">Productos</a></li>
+    <li class="my-6">
+      <a target="_blank" href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles...">Contacto</a>
+    </li>
+  </ul>
 </div>
-  </section>
 
- 
-  <!-- Features -->
-  <section id="quienes" class="lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center bg-secondary">
-    <div>
-      <h2 class="font-pt-serif text-3xl bg-left-bottom bg-no-repeat pb-8  mb-8 bg-underline3 bg-100%">Qué es CongoShop</h2>
-    </div>
-    <div class="md:grid md:grid-cols-2 md:grid-rows-2">
-
-      <div class="flex items-start font-montserrat my-6 mr-10">
-        <img src='dist/assets/logos/Heart.svg' alt='' class="h-7 mr-4" />
-        <div>
-          <h3 class="font-semibold text-2xl">Quiénes somos</h3>
-          <p>
-            Somos una empresa familiar argentina dedicada a ofrecer productos de calidad.
-          </p>
-        </div>
-      </div>
-
-      <div class="flex items-start font-montserrat my-6 mr-10">
-        <img src='dist/assets/logos/Heart.svg' alt='' class="h-7 mr-4" />
-        <div>
-          <h3 class="font-semibold text-2xl">Tenemos los mejores precios</h3>
-          <p>
-            Nos esforzamos por ofrecer los mejores precios del mercado para que
-            puedas comprar lo que necesitas sin gastar de más.
-          </p>
-        </div>
-      </div>
-
-      <div class="flex items-start font-montserrat my-6 mr-10">
-        <img src='dist/assets/logos/Heart.svg' alt='' class="h-7 mr-4" />
-        <div>
-          <h3 class="font-semibold text-2xl">Somos vendedores de MercadoLibre</h3>
-          <p>
-            Nos enorgullece ser vendedores de MercadoLibre, ofreciendo una
-            amplia variedad de productos con la confianza y seguridad que
-            brinda esta plataforma.
-          </p>
-        </div>
-      </div>
-
-      <div class="flex items-start font-montserrat my-6 mr-10">
-        <img src='dist/assets/logos/Heart.svg' alt='' class="h-7 mr-4" />
-        <div>
-          <h3 class="font-semibold text-2xl">Tenemos las mejores ofertas</h3>
-          <p>
-            Ofrecemos ofertas exclusivas y descuentos especiales para que puedas
-            aprovechar al máximo tus compras en CongoShop.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-
-  <!-- FAQ  -->
-  <section class="lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center items-start pt-8 md:pt-36 bg-black text-white">
-    <div>
-      <h2 class="font-pt-serif text-3xl bg-left-bottom bg-no-repeat mb-8 bg-highlight3 mb-0 bg-center bg-100%">
-        FAQ
-      </h2>
-    </div>
-
-    <div toggleElement class="w-full py-4 cursor-pointer">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto">
-          ¿Puedo comprarles por fuera de MercadoLibre?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat text-sm font-extralight pt-8 hidden">
-        Por supuesto, contactanos por <a style="text-decoration:underline" href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles...">Whatsapp</a> y te ayudamos a comprar lo que necesites.
-      </div>
-    </div>
-    <hr class="w-full bg-white" />
-
-    <div toggleElement class="w-full py-4 cursor-pointer">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto">
-          ¿Tienen local físico?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat text-sm font-extralight pt-8 hidden">
-        Sólo vendemos online, pero podes pasar a retirar por nuestra oficina en CABA, en congreso.
-      </div>
-    </div>
-    <hr class="w-full bg-white" />
-
-    <div toggleElement class="w-full py-4 hidden cursor-pointer">
-      <div class="flex justify-between items-center">
-        <div question class="font-montserrat font-medium mr-auto">
-          Am I awesome?
-        </div>
-        <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
-      </div>
-      <div answer class="font-montserrat text-sm font-extralight pb-8 hidden">
-        Yes! No doubt about it.
-      </div>
-    </div>
-    <hr class="w-full bg-white" />
-
-  </section>
-
-  <!-- Footer -->
-  <section class="bg-black lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center">
-    <div class="mb-4">
-      <span class="text-white font-bold">CongoShop</span>
-    </div>
-    <div class="flex mb-8 hidden">
-      <a href="#">
-        <img src='dist/assets/logos/Facebook.svg' alt="Facebook logo" class="mx-4" />
-      </a>
-      <a href="#">
-        <img src='dist/assets/logos/Youtube.svg' alt="Youtube logo" class="mx-4" />
-      </a>
-      <a href="#">
-        <img src='dist/assets/logos/Instagram.svg' alt="Instagram logo" class="mx-4" />
-      </a>
-      <a href="#">
-        <img src='dist/assets/logos/Twitter.svg' alt="Twitter logo" class="mx-4" />
+<!-- Hero -->
+<section class="pt-24 md:mt-0 md:h-screen flex flex-col justify-center text-center md:text-left md:flex-row md:justify-between md:items-center lg:px-48 md:px-12 px-4 bg-secondary">
+  <div class="md:flex-1 md:mr-10">
+    <h1 class="font-pt-serif text-4xl md:text-5xl font-bold mb-7">
+      CongoShop:
+      <span class="bg-undeNOrline1 bg-left-bottom bg-no-repeat pb-2 bg-100%">
+        Compras online faciles y seguras
+      </span>
+    </h1>
+    <p class="font-pt-serif font-normal mb-7">
+      Compra sin vueltas, con envio rapido y atencion personalizada. Explora nuestro catalogo y encontra lo que buscas hoy mismo!
+    </p>
+    <div class="font-montserrat">
+      <button class="bg-black px-6 py-4 rounded-lg border-2 border-black border-solid text-white mr-2 mb-2 hidden">
+        Ver productos
+      </button>
+      <a href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles..." class="hvr-bounce-to-right contacto-btn px-6 py-4 border-2 border-black border-solid rounded-lg">
+        Contactar
       </a>
     </div>
-    <div class="text-white font-montserrat text-sm">
-      © 2026 CongoShop. 15 años de experiencia en ventas online.
+  </div>
+  <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1"
+    id="hero-parallax"
+    style="transform-style: preserve-3d; perspective: 1000px;">
+    <div class="relative layer" data-depth="0.2">
+      <img src='img/Highlight1.svg' alt="" class="absolute -top-16 -left-10" />
     </div>
-  </section>
+    <img src='bolsa.webp' alt="Macbook" class="layer" data-depth="0.6" />
+    <div class="relative layer" data-depth="0.9">
+      <img src='img/Highlight2.svg' alt="" class="absolute -bottom-10 -right-6" />
+    </div>
+  </div>
+</section>
 
+<!-- Features -->
+<section id="quienes" class="lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center bg-secondary">
+  <div>
+    <h2 class="font-pt-serif text-3xl bg-left-bottom bg-no-repeat pb-8 mb-8 bg-underline3 bg-100%">Que es CongoShop</h2>
+  </div>
+  <div class="md:grid md:grid-cols-2 md:grid-rows-2">
+    <div class="flex items-start font-montserrat my-6 mr-10">
+      <img src='dist/assets/logos/Heart.svg' alt='' class="h-7 mr-4" />
+      <div>
+        <h3 class="font-semibold text-2xl">Quienes somos</h3>
+        <p>Somos una empresa familiar argentina dedicada a ofrecer productos de calidad.</p>
+      </div>
+    </div>
+    <div class="flex items-start font-montserrat my-6 mr-10">
+      <img src='dist/assets/logos/Heart.svg' alt='' class="h-7 mr-4" />
+      <div>
+        <h3 class="font-semibold text-2xl">Tenemos los mejores precios</h3>
+        <p>Nos esforzamos por ofrecer los mejores precios del mercado para que puedas comprar lo que necesitas sin gastar de mas.</p>
+      </div>
+    </div>
+    <div class="flex items-start font-montserrat my-6 mr-10">
+      <img src='dist/assets/logos/Heart.svg' alt='' class="h-7 mr-4" />
+      <div>
+        <h3 class="font-semibold text-2xl">Somos vendedores de MercadoLibre</h3>
+        <p>Nos enorgullece ser vendedores de MercadoLibre, ofreciendo una amplia variedad de productos con la confianza y seguridad que brinda esta plataforma.</p>
+      </div>
+    </div>
+    <div class="flex items-start font-montserrat my-6 mr-10">
+      <img src='dist/assets/logos/Heart.svg' alt='' class="h-7 mr-4" />
+      <div>
+        <h3 class="font-semibold text-2xl">Tenemos las mejores ofertas</h3>
+        <p>Ofrecemos ofertas exclusivas y descuentos especiales para que puedas aprovechar al maximo tus compras en CongoShop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center items-start pt-8 md:pt-36 bg-black text-white">
+  <div>
+    <h2 class="font-pt-serif text-3xl bg-left-bottom bg-no-repeat mb-8 bg-highlight3 mb-0 bg-center bg-100%">FAQ</h2>
+  </div>
+  <div toggleElement class="w-full py-4 cursor-pointer">
+    <div class="flex justify-between items-center">
+      <div question class="font-montserrat font-medium mr-auto">Puedo comprarles por fuera de MercadoLibre?</div>
+      <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
+    </div>
+    <div answer class="font-montserrat text-sm font-extralight pt-8 hidden">
+      Por supuesto, contactanos por <a style="text-decoration:underline" href="https://api.whatsapp.com/send?phone=5491130025687&text=Hola%20CongoShop!%20Quiero%20comprarles...">Whatsapp</a> y te ayudamos a comprar lo que necesites.
+    </div>
+  </div>
+  <hr class="w-full bg-white" />
+  <div toggleElement class="w-full py-4 cursor-pointer">
+    <div class="flex justify-between items-center">
+      <div question class="font-montserrat font-medium mr-auto">Tienen local fisico?</div>
+      <img src='dist/assets/logos/CaretRight.svg' alt="" class="transform transition-transform" />
+    </div>
+    <div answer class="font-montserrat text-sm font-extralight pt-8 hidden">
+      Solo vendemos online, pero podes pasar a retirar por nuestra oficina en CABA, en congreso.
+    </div>
+  </div>
+  <hr class="w-full bg-white" />
+</section>
+
+<!-- Footer -->
+<section class="bg-black lg:px-48 md:px-12 px-4 py-14 flex flex-col items-center">
+  <div class="mb-4">
+    <span class="text-white font-bold">CongoShop</span>
+  </div>
+  <div class="flex mb-8 hidden">
+    <a href="#"><img src='dist/assets/logos/Facebook.svg' alt="Facebook logo" class="mx-4" /></a>
+    <a href="#"><img src='dist/assets/logos/Youtube.svg' alt="Youtube logo" class="mx-4" /></a>
+    <a href="#"><img src='dist/assets/logos/Instagram.svg' alt="Instagram logo" class="mx-4" /></a>
+    <a href="#"><img src='dist/assets/logos/Twitter.svg' alt="Twitter logo" class="mx-4" /></a>
+  </div>
+  <div class="text-white font-montserrat text-sm">
+    2026 CongoShop. 15 anos de experiencia en ventas online.
+  </div>
+</section>
 
 <!-- Matter.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
@@ -261,11 +213,11 @@
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   pointer-events: none;
-  z-index: -1;
+  z-index: 999;
 "></canvas>
 
 <script>
-const { Engine, Render, Runner, Bodies, Body, World, Events } = Matter;
+const { Engine, Runner, Bodies, Body, World } = Matter;
 
 const canvas  = document.getElementById('billetes-canvas');
 canvas.width  = window.innerWidth;
@@ -278,18 +230,11 @@ window.addEventListener('resize', () => {
 const engine = Engine.create({ gravity: { y: 1.5 } });
 const world  = engine.world;
 
-// Piso invisible
-const piso = Bodies.rectangle(
-  window.innerWidth / 2, window.innerHeight + 25,
-  window.innerWidth * 2, 50,
-  { isStatic: true }
-);
-// Paredes
+const piso     = Bodies.rectangle(window.innerWidth/2, window.innerHeight+25, window.innerWidth*2, 50, { isStatic: true });
 const paredIzq = Bodies.rectangle(-25, window.innerHeight/2, 50, window.innerHeight*2, { isStatic: true });
 const paredDer = Bodies.rectangle(window.innerWidth+25, window.innerHeight/2, 50, window.innerHeight*2, { isStatic: true });
 World.add(world, [piso, paredIzq, paredDer]);
 
-// Cargar imágenes de billetes
 const imagenes = ['img/coin.svg'].map(src => {
   const img = new Image();
   img.src = src;
@@ -299,129 +244,238 @@ const imagenes = ['img/coin.svg'].map(src => {
 const billetesEnMundo = [];
 
 function crearBillete() {
-  const img   = imagenes[Math.floor(Math.random() * imagenes.length)];
-  const w     = 80 + Math.random() * 40;   // ancho entre 80 y 120px
-  const h     = w * 0.5;                    // proporción billete
-  const x     = Math.random() * window.innerWidth;
-  const y     = -h;
+  const img = imagenes[Math.floor(Math.random() * imagenes.length)];
+  const w   = 80 + Math.random() * 40;
+  const h   = w * 0.5;
+  const x   = Math.random() * window.innerWidth;
 
-  const body = Bodies.rectangle(x, y, w, h, {
-    restitution: 0.3,   // rebote suave
+  const radio = w / 2;
+  const body = Bodies.circle(x, -radio, radio, {
+    restitution: 0.3,
     friction: 0.8,
     frictionAir: 0.01,
-    angle: (Math.random() - 0.5) * 0.05,
-    angle:0,
   });
 
-  // Velocidad inicial aleatoria
-  Body.setVelocity(body, {
-    x: (Math.random() - 0.5) * 4,
-    y: Math.random() * 3 + 2,
-  });
-  Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.08);
-  
+  Body.setVelocity(body, { x: (Math.random() - 0.5) * 4, y: Math.random() * 3 + 2 });
+  Body.setAngularVelocity(body, 0);
 
   World.add(world, body);
   billetesEnMundo.push({ body, img, w, h });
 }
 
-// Dibujo custom sobre canvas
 const ctx = canvas.getContext('2d');
 
 function dibujar() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   for (const { body, img, w, h } of billetesEnMundo) {
     const { x, y } = body.position;
-    const angle    = body.angle;
-
     ctx.save();
     ctx.translate(x, y);
-    ctx.rotate(angle);
+    ctx.rotate(body.angle);
     ctx.globalAlpha = 0.95;
-
-    if (img.complete) {
+    if (img.complete && img.naturalWidth > 0) {
       ctx.drawImage(img, -w/2, -h/2, w, h);
     } else {
-      // Fallback mientras carga
       ctx.fillStyle = '#85bb65';
       ctx.fillRect(-w/2, -h/2, w, h);
     }
-
     ctx.restore();
   }
 }
 
-// Loop
+// ─── MOUSE ─────────────────────────────────────────────────
+const mousePos = { x: 0, y: 0 };
+document.addEventListener('mousemove', e => {
+  mousePos.x = e.clientX;
+  mousePos.y = e.clientY;
+});
+
+/*/ ─── TOOLTIP ───────────────────────────────────────────────
+const tooltip = document.createElement('div');
+tooltip.innerText = 'Hace click para juntar las monedas!';
+tooltip.style.cssText = `
+  position: fixed; top: 70px; right: 16px;
+  background: #fff; border: 1px solid #e5e7eb;
+  border-radius: 8px; padding: 6px 12px;
+  font-size: 12px; font-family: montserrat, sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1001;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.3s ease; white-space: nowrap;
+`;
+document.body.appendChild(tooltip);
+
+let tooltipMostrado = false;
+function mostrarTooltip() {
+  if (tooltipMostrado) return;
+  tooltipMostrado = true;
+  tooltip.style.opacity = '1';
+  setTimeout(() => tooltip.style.opacity = '0', 3000);
+}
+
+*/
+
+// ─── CHANCHITO ─────────────────────────────────────────────
+let modoAspirar = false;
+const chanchito = document.getElementById('chanchito');
+chanchito.addEventListener('click', () => {
+  modoAspirar = !modoAspirar;
+  if (modoAspirar) {
+    chanchito.style.filter = 'drop-shadow(0 0 10px rgba(255,180,0,0.8))';
+    chanchito.style.transform = 'scale(1.2)';
+    document.body.classList.add('cursor-chanchito');
+    tooltip.style.opacity = '0';
+    if (monedasRecogidas === 0 && billetesEnMundo.length > 0) {
+      mostrarMensaje('Recolecta las monedas con el cursor', true);
+    }
+  } else {
+    chanchito.style.filter = 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))';
+    chanchito.style.transform = 'scale(1)';
+    document.body.classList.remove('cursor-chanchito');
+    if (monedasCayeron && billetesEnMundo.length > 0) {
+      mostrarMensaje('☞Click en el chanchito para recoger monedas', true);
+    } else if (billetesEnMundo.length === 0 && monedasRecogidas > 0) {
+      mostrarMensaje('OK: ' + monedasRecogidas + ' monedas recogidas!');
+      setTimeout(ocultarMensaje, 3000);
+    }
+  }
+});
+
+// ─── BOLSA (definida ANTES de bolsaFisica y el loop) ───────
+const bolsa = document.querySelector('img[alt="Macbook"]');
+bolsa.style.cursor = 'pointer';
+
+// Mensaje en navbar
+const mensaje = document.getElementById('mensaje');
+let monedasCayeron = false;
+let monedasRecogidas = 0;
+
+function mostrarMensaje(texto, parpadear = false) {
+  mensaje.textContent = texto;
+  mensaje.classList.remove('hidden');
+  mensaje.classList.add('flex');
+  if (parpadear) {
+    mensaje.classList.add('blink');
+  } else {
+    mensaje.classList.remove('blink');
+  }
+}
+
+function ocultarMensaje() {
+  mensaje.classList.add('hidden');
+  mensaje.classList.remove('flex', 'blink');
+}
+
+bolsa.addEventListener('mouseenter', () => {
+  if (!monedasCayeron) {
+    mostrarMensaje('☞ Click en la bolsa!', true);
+  }
+});
+
+bolsa.addEventListener('mouseleave', () => {
+  if (!monedasCayeron) {
+    ocultarMensaje();
+  }
+});
+
+bolsa.addEventListener('click', () => {
+  monedasCayeron = true;
+  monedasRecogidas = 0;
+  for (let i = 0; i < 40; i++) {
+    setTimeout(crearBillete, i * 40);
+  }
+  setTimeout(() => {
+    mostrarMensaje('☞ Click en el chanchito para recoger monedas', true);
+    mostrarTooltip();
+  }, 2500);
+});
+
+// ─── CUERPO FISICO DE LA BOLSA ─────────────────────────────
+const bolsaFisica = Bodies.rectangle(0, 0, 120, 160, {
+  isStatic: true,
+  friction: 0.5,
+  restitution: 0.4,
+  label: 'bolsa'
+});
+World.add(world, bolsaFisica);
+
+function actualizarPosicionBolsa() {
+  const rect = bolsa.getBoundingClientRect();
+  Body.setPosition(bolsaFisica, {
+    x: rect.left + rect.width  / 2,
+    y: rect.top  + rect.height / 2,
+  });
+}
+
+// ─── RUNNER Y LOOP PRINCIPAL ───────────────────────────────
 const runner = Runner.create();
 Runner.run(runner, engine);
 
 (function loop() {
-  
+  actualizarPosicionBolsa();
+
+  if (modoAspirar) {
+    for (let i = billetesEnMundo.length - 1; i >= 0; i--) {
+      const { body } = billetesEnMundo[i];
+      const dx   = mousePos.x - body.position.x;
+      const dy   = mousePos.y - body.position.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 150) {
+        Body.setVelocity(body, { x: (dx/dist)*15, y: (dy/dist)*15 });
+      }
+      if (dist < 25) {
+        World.remove(world, body);
+        billetesEnMundo.splice(i, 1);
+        monedasRecogidas++;
+        mostrarMensaje('☞' + monedasRecogidas + ' moneda' + (monedasRecogidas === 1 ? '' : 's') + ' recogida' + (monedasRecogidas === 1 ? '' : 's') + '!');
+        chanchito.style.transform = 'scale(1.35)';
+        setTimeout(() => chanchito.style.transform = 'scale(1.2)', 120);
+      }
+    }
+  } else {
+    const radio  = 80;
+    const fuerza = 0.004;
+    for (const { body } of billetesEnMundo) {
+      const dx   = body.position.x - mousePos.x;
+      const dy   = body.position.y - mousePos.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < radio && dist > 0) {
+        const intensidad = (1 - dist/radio) * fuerza;
+        Body.applyForce(body, body.position, {
+          x: (dx/dist) * intensidad,
+          y: (dy/dist) * intensidad,
+        });
+      }
+    }
+  }
+
   Engine.update(engine, 1000/60);
   dibujar();
   requestAnimationFrame(loop);
 })();
 
-
-// Mouse que interactúa con los cuerpos
-const mouse = Matter.Mouse.create(canvas);
-const mouseConstraint = Matter.MouseConstraint.create(engine, {
-  mouse: mouse,
-  constraint: {
-    stiffness: 0.2,
-    render: { visible: false }
-  }
-});
-World.add(world, mouseConstraint);
-
-// Importante: que el canvas capture el mouse correctamente
-mouse.element = canvas;
-canvas.style.pointerEvents = 'auto'; // cambiamos esto para que reciba eventos
-
-
-// Limpiar billetes viejos cada 15 segundos para no sobrecargar
+// ─── LIMPIEZA ──────────────────────────────────────────────
 setInterval(() => {
   if (billetesEnMundo.length > 80) {
     const viejos = billetesEnMundo.splice(0, 30);
     viejos.forEach(({ body }) => World.remove(world, body));
   }
 }, 15000);
-
-// Click en la bolsa → lluvia de billetes
-const bolsa = document.querySelector('img[alt="Macbook"]');
-bolsa.style.cursor = 'pointer';
-
-bolsa.addEventListener('click', () => {
-  // Lluvia de 40 billetes con delay escalonado
-  for (let i = 0; i < 40; i++) {
-    setTimeout(crearBillete, i * 40);
-  }
-});
 </script>
 
-
+<!-- Menu mobile + parallax + FAQ -->
 <script>
-    window.addEventListener("load", function () {
-  console.log(document.querySelector("#showMenu"));
-  document
-    .querySelector("#showMenu")
-    .addEventListener("click", function (event) {
-      document.querySelector("#mobileNav").classList.remove("hidden");
-    });
-
-  document
-    .querySelector("#hideMenu")
-    .addEventListener("click", function (event) {
-      document.querySelector("#mobileNav").classList.add("hidden");
-    });
+window.addEventListener("load", function () {
+  document.querySelector("#showMenu").addEventListener("click", () => {
+    document.querySelector("#mobileNav").classList.remove("hidden");
+  });
+  document.querySelector("#hideMenu").addEventListener("click", () => {
+    document.querySelector("#mobileNav").classList.add("hidden");
+  });
 
   document.querySelectorAll("[toggleElement]").forEach((toggle) => {
-    toggle.addEventListener("click", function (event) {
-      console.log(toggle);
+    toggle.addEventListener("click", function () {
       const answerElement = toggle.querySelector("[answer]");
-      const caretElement = toggle.querySelector("img");
-      console.log(answerElement);
+      const caretElement  = toggle.querySelector("img");
       if (answerElement.classList.contains("hidden")) {
         answerElement.classList.remove("hidden");
         caretElement.classList.add("rotate-90");
@@ -431,57 +485,37 @@ bolsa.addEventListener('click', () => {
       }
     });
   });
-});
-
-
-
-
 
   const heroContainer = document.getElementById('hero-parallax');
   const heroLayers    = heroContainer.querySelectorAll('.layer');
-
   let tx = 0, ty = 0, cx = 0, cy = 0;
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   window.addEventListener('mousemove', e => {
     const rect = heroContainer.getBoundingClientRect();
-    const midX = rect.left + rect.width  / 2;
-    const midY = rect.top  + rect.height / 2;
-    tx = (e.clientX - midX) / (window.innerWidth  / 2);
-    ty = (e.clientY - midY) / (window.innerHeight / 2);
+    tx = (e.clientX - (rect.left + rect.width/2))  / (window.innerWidth/2);
+    ty = (e.clientY - (rect.top  + rect.height/2)) / (window.innerHeight/2);
   });
-
   window.addEventListener('mouseleave', () => { tx = 0; ty = 0; });
 
   const MAX_SHIFT = 25;
   const MAX_TILT  = 12;
 
-  function animate() {
+  function animateParallax() {
     cx = lerp(cx, tx, 0.06);
     cy = lerp(cy, ty, 0.06);
-
     heroLayers.forEach(layer => {
       const depth = parseFloat(layer.dataset.depth) || 0.5;
-      const x = cx * MAX_SHIFT * depth;
-      const y = cy * MAX_SHIFT * depth;
-      layer.style.transform = `translate(${x}px, ${y}px)`;
+      layer.style.transform = `translate(${cx * MAX_SHIFT * depth}px, ${cy * MAX_SHIFT * depth}px)`;
     });
-
-    heroContainer.style.transform = `
-      perspective(1000px)
-      rotateY(${cx * MAX_TILT}deg)
-      rotateX(${-cy * MAX_TILT}deg)
-    `;
-
-    requestAnimationFrame(animate);
+    heroContainer.style.transform = `perspective(1000px) rotateY(${cx * MAX_TILT}deg) rotateX(${-cy * MAX_TILT}deg)`;
+    requestAnimationFrame(animateParallax);
   }
 
-  animate();
-
-
+  animateParallax();
+});
 </script>
 
 </body>
-
 </html>
