@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/styles.css" />
   <style>
     .cursor-chanchito {
-      cursor: url('img/piggy-bank.svg') 16 16, auto;
+      cursor: url('img/piggy-bank.svg') 20 20, auto;
     }
     @keyframes blink {
       0%, 100% { opacity: 1; }
@@ -208,7 +208,7 @@
 <!-- Matter.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 
-<canvas id="billetes-canvas" style="
+<canvas class="hidden md:block" id="billetes-canvas" style="
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
@@ -246,7 +246,7 @@ const billetesEnMundo = [];
 function crearBillete() {
   const img = imagenes[Math.floor(Math.random() * imagenes.length)];
   const w   = 80 + Math.random() * 40;
-  const h   = w * 0.5;
+  const h   = w * 1;
   const x   = Math.random() * window.innerWidth;
 
   const radio = w / 2;
