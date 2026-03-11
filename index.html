@@ -105,15 +105,21 @@
         </a>
       </div>
     </div>
-    <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1">
-      <div class="relative">
-        <img src='img/Highlight1.svg' alt="" class="absolute -top-16 -left-10" />
-      </div>
-      <img src='bolsa.webp' alt="Macbook" />
-      <div class="relative">
-        <img src='img/Highlight2.svg' alt="" class="absolute -bottom-10 -right-6" />
-      </div>
-    </div>
+    <div class="flex justify-around md:block mt-8 md:mt-0 md:flex-1" 
+     id="hero-parallax" 
+     style="transform-style: preserve-3d; perspective: 1000px;">
+  
+  <div class="relative layer" data-depth="0.2">
+    <img src='img/Highlight1.svg' alt="" class="absolute -top-16 -left-10" />
+  </div>
+
+  <img src='bolsa.webp' alt="Macbook" class="layer" data-depth="0.6" />
+
+  <div class="relative layer" data-depth="0.9">
+    <img src='img/Highlight2.svg' alt="" class="absolute -bottom-10 -right-6" />
+  </div>
+
+</div>
   </section>
 
  
@@ -277,6 +283,51 @@
     });
   });
 });
+
+
+
+  const heroContainer = document.getElementById('hero-parallax');
+  const heroLayers    = heroContainer.querySelectorAll('.layer');
+
+  let tx = 0, ty = 0, cx = 0, cy = 0;
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  window.addEventListener('mousemove', e => {
+    const rect = heroContainer.getBoundingClientRect();
+    const midX = rect.left + rect.width  / 2;
+    const midY = rect.top  + rect.height / 2;
+    tx = (e.clientX - midX) / (window.innerWidth  / 2);
+    ty = (e.clientY - midY) / (window.innerHeight / 2);
+  });
+
+  window.addEventListener('mouseleave', () => { tx = 0; ty = 0; });
+
+  const MAX_SHIFT = 25;
+  const MAX_TILT  = 12;
+
+  function animate() {
+    cx = lerp(cx, tx, 0.06);
+    cy = lerp(cy, ty, 0.06);
+
+    heroLayers.forEach(layer => {
+      const depth = parseFloat(layer.dataset.depth) || 0.5;
+      const x = cx * MAX_SHIFT * depth;
+      const y = cy * MAX_SHIFT * depth;
+      layer.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    heroContainer.style.transform = `
+      perspective(1000px)
+      rotateY(${cx * MAX_TILT}deg)
+      rotateX(${-cy * MAX_TILT}deg)
+    `;
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
 
 </script>
 
