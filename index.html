@@ -247,19 +247,16 @@ const billetesEnMundo = [];
 function crearBillete() {
   const img = imagenes[Math.floor(Math.random() * imagenes.length)];
   const w   = 40 + Math.random() * 40;
-  const h   = w * 1;
+  const h   = w;
   const x   = Math.random() * window.innerWidth;
-
   const radio = w / 2;
   const body = Bodies.circle(x, -radio, radio, {
     restitution: 0.3,
     friction: 0.8,
     frictionAir: 0.01,
   });
-
   Body.setVelocity(body, { x: (Math.random() - 0.5) * 4, y: Math.random() * 3 + 2 });
   Body.setAngularVelocity(body, 0);
-
   World.add(world, body);
   billetesEnMundo.push({ body, img, w, h });
 }
@@ -291,30 +288,6 @@ document.addEventListener('mousemove', e => {
   mousePos.y = e.clientY;
 });
 
-/*/ ─── TOOLTIP ───────────────────────────────────────────────
-const tooltip = document.createElement('div');
-tooltip.innerText = 'Hace click para juntar las monedas!';
-tooltip.style.cssText = `
-  position: fixed; top: 70px; right: 16px;
-  background: #fff; border: 1px solid #e5e7eb;
-  border-radius: 8px; padding: 6px 12px;
-  font-size: 12px; font-family: montserrat, sans-serif;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1001;
-  pointer-events: none; opacity: 0;
-  transition: opacity 0.3s ease; white-space: nowrap;
-`;
-document.body.appendChild(tooltip);
-
-let tooltipMostrado = false;
-function mostrarTooltip() {
-  if (tooltipMostrado) return;
-  tooltipMostrado = true;
-  tooltip.style.opacity = '1';
-  setTimeout(() => tooltip.style.opacity = '0', 3000);
-}
-
-*/
-
 // ─── CHANCHITO ─────────────────────────────────────────────
 let modoAspirar = false;
 const chanchito = document.getElementById('chanchito');
@@ -323,7 +296,6 @@ chanchito.addEventListener('click', () => {
   if (modoAspirar) {
     chanchito.style.transform = 'scale(1.2)';
     document.body.classList.add('cursor-chanchito');
-    tooltip.style.opacity = '0';
     if (monedasRecogidas === 0 && billetesEnMundo.length > 0) {
       mostrarMensaje('Recolecta las monedas con el cursor', true);
     }
@@ -332,7 +304,7 @@ chanchito.addEventListener('click', () => {
     chanchito.style.transform = 'scale(1)';
     document.body.classList.remove('cursor-chanchito');
     if (monedasCayeron && billetesEnMundo.length > 0) {
-      mostrarMensaje('☞Click en el chanchito para recoger monedas', true);
+      mostrarMensaje('☞ Click en el chanchito para recoger monedas', true);
     } else if (billetesEnMundo.length === 0 && monedasRecogidas > 0) {
       mostrarMensaje('OK: ' + monedasRecogidas + ' monedas recogidas!');
       setTimeout(ocultarMensaje, 3000);
@@ -340,11 +312,10 @@ chanchito.addEventListener('click', () => {
   }
 });
 
-// ─── BOLSA (definida ANTES de bolsaFisica y el loop) ───────
+// ─── BOLSA ─────────────────────────────────────────────────
 const bolsa = document.querySelector('img[alt="Macbook"]');
 bolsa.style.cursor = 'pointer';
 
-// Mensaje en navbar
 const mensaje = document.getElementById('mensaje');
 let monedasCayeron = false;
 let monedasRecogidas = 0;
@@ -353,11 +324,8 @@ function mostrarMensaje(texto, parpadear = false) {
   mensaje.textContent = texto;
   mensaje.classList.remove('hidden');
   mensaje.classList.add('flex');
-  if (parpadear) {
-    mensaje.classList.add('blink');
-  } else {
-    mensaje.classList.remove('blink');
-  }
+  if (parpadear) mensaje.classList.add('blink');
+  else mensaje.classList.remove('blink');
 }
 
 function ocultarMensaje() {
@@ -366,17 +334,11 @@ function ocultarMensaje() {
 }
 
 bolsa.addEventListener('mouseenter', () => {
-  if (!monedasCayeron) {
-    mostrarMensaje('☞ Click en la bolsa!', true);
-  }
+  if (!monedasCayeron) mostrarMensaje('☞ Click en la bolsa!', true);
 });
-
 bolsa.addEventListener('mouseleave', () => {
-  if (!monedasCayeron) {
-    ocultarMensaje();
-  }
+  if (!monedasCayeron) ocultarMensaje();
 });
-
 bolsa.addEventListener('click', () => {
   monedasCayeron = true;
   monedasRecogidas = 0;
@@ -385,24 +347,66 @@ bolsa.addEventListener('click', () => {
   }
   setTimeout(() => {
     mostrarMensaje('☞ Click en el chanchito para recoger monedas', true);
-    mostrarTooltip();
   }, 2500);
 });
 
-// ─── CUERPO FISICO DE LA BOLSA ─────────────────────────────
+// ─── CUERPOS FÍSICOS ───────────────────────────────────────
 const bolsaFisica = Bodies.rectangle(0, 0, 120, 160, {
-  isStatic: true,
-  friction: 0.5,
-  restitution: 0.4,
-  label: 'bolsa'
+  isStatic: true, friction: 0.5, restitution: 0.4, label: 'bolsa'
 });
-World.add(world, bolsaFisica);
 
-function actualizarPosicionBolsa() {
-  const rect = bolsa.getBoundingClientRect();
+// Obtiene el rect inicial del elemento para inicializar el cuerpo con tamaño real
+function crearObstaculo(el) {
+  const r = el.getBoundingClientRect();
+  const w = (r.width  || 200) + 12;
+  const h = (r.height || 40)  + 8;
+  const body = Bodies.rectangle(
+    r.left + r.width  / 2,
+    r.top  + r.height / 2,
+    w, h,
+    { isStatic: true, friction: 0.5, restitution: 0.3, label: 'texto' }
+  );
+  body._el = el;
+  body._w  = w;
+  body._h  = h;
+  return body;
+}
+
+// h1, ambos párrafos, y el botón de contacto
+const obstaculoEls = [
+  document.querySelector('h1'),
+  ...document.querySelectorAll('.md\\:flex-1 p'),
+  document.querySelector('a.contacto-btn'),
+].filter(Boolean);
+
+const obstaculosCuerpos = obstaculoEls.map(crearObstaculo);
+
+World.add(world, [bolsaFisica, ...obstaculosCuerpos]);
+
+// ─── ACTUALIZAR POSICIÓN DE TODOS LOS OBSTÁCULOS ───────────
+function actualizarObstaculos() {
+  // bolsa
+  const rb = bolsa.getBoundingClientRect();
   Body.setPosition(bolsaFisica, {
-    x: rect.left + rect.width  / 2,
-    y: rect.top  + rect.height / 2,
+    x: rb.left + rb.width  / 2,
+    y: rb.top  + rb.height / 2,
+  });
+
+  // textos hero
+  obstaculosCuerpos.forEach(body => {
+    const r = body._el.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0) return;
+    Body.setPosition(body, {
+      x: r.left + r.width  / 2,
+      y: r.top  + r.height / 2,
+    });
+    const w = r.width  + 12;
+    const h = r.height + 8;
+    if (Math.abs(body._w - w) > 2 || Math.abs(body._h - h) > 2) {
+      Body.scale(body, w / body._w, h / body._h);
+      body._w = w;
+      body._h = h;
+    }
   });
 }
 
@@ -411,7 +415,7 @@ const runner = Runner.create();
 Runner.run(runner, engine);
 
 (function loop() {
-  actualizarPosicionBolsa();
+  actualizarObstaculos(); // <-- acá adentro, se llama cada frame
 
   if (modoAspirar) {
     for (let i = billetesEnMundo.length - 1; i >= 0; i--) {
